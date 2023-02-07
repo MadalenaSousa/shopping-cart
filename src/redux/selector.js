@@ -1,3 +1,12 @@
-export const getSongsToDisplay = (state) => (state && state.allSongs) ? state.allSongs : [];
+import data from '../components/resources/db.json'
 
-export const getSplitSongsToDisplay = (state) => (state && state.splitSongs) ? state.splitSongs : [];
+const backupArray = data.songs;
+
+export const getSongsToDisplay = (store) => {
+    if(store && store.songs) {
+        return store.songs
+    } else {
+        console.log("Error getting songs. Backup results will be returned.")
+        return backupArray
+    }
+}

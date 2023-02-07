@@ -4,19 +4,12 @@ import ListItem from './ListItem';
 import Typography from '@mui/material/Typography';
 import Search from './Search';
 import Pages from './Pages';
-
+import {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getSongsToDisplay } from '../redux/selector';
-import { getSongsFromAPI } from '../redux/actions/getSongsFromAPI';
 
 export default function MusicList() {
-  const dispatch = useDispatch();
-  const songs = useSelector(getSongsToDisplay)
-  
-  React.useEffect(() => {
-    dispatch(getSongsFromAPI)
-    //console.log(songs)
-  }, [])
+  const [songs, setSongs] = useState([])
 
   return (
     <Box component="span" sx={{ p: 2 }}>
@@ -35,9 +28,7 @@ export default function MusicList() {
             trackPrice={song.trackPrice}
           />
         ))} 
-      <Pages
-        songList={songs}
-      />
+      <Pages setSongs={(songs) => setSongs(songs)} />
     </Box>
   );
 }
