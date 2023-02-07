@@ -3,7 +3,6 @@ import axios from "axios";
 
 export const getSongsFromAPI = (dispatch) => {
     const url = "http://localhost:3000/songs";
-    
     return axios
         .get(url)
         .then((res) => {

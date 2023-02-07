@@ -8,10 +8,10 @@ const initialState = {
 const getSongsReducer = (state = initialState, action) => {
     switch (action.type) {
         case START_SONG_REQUEST:
+            let newSongs = action.payload
             return {
                 ...state,
-                songs: action.payload,
-                
+                songs: newSongs,
             }
         default: return state
     }
