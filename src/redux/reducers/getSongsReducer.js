@@ -1,8 +1,8 @@
 import { START_SONG_REQUEST } from "../actionTypes";;
 
 const initialState = {
-    songs: [],
-    currentPage: 1
+    songs: '',
+    currentPage: 0
 }
 
 const getSongsReducer = (state = initialState, action) => {

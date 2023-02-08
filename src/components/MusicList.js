@@ -22,7 +22,7 @@ export default function MusicList() {
   });
   
   useEffect(() => {    
-    getSongsFromAPI(dispatch)
+    dispatch(getSongsFromAPI)
 
     const newSongs = allSongs.slice(pagination.from, pagination.to)
     setSongs(newSongs)
@@ -38,6 +38,7 @@ export default function MusicList() {
       to: to
     });
   }
+
   return (
     <Box component="span" sx={{ p: 2 }}>
         <Box sx={{m: 2}}>
@@ -61,18 +62,3 @@ export default function MusicList() {
     </Box>
   );
 }
-
-/*
-  {songs.map((song) => (
-    <ListItem
-      key={song.trackId}
-      trackName={song.trackName}
-      collectionName={song.collectionName}
-      artistName={song.artistName}
-      trackPrice={song.trackPrice}
-    />
-  ))} 
-  <Pages
-    songList={songs}
-  />
-*/

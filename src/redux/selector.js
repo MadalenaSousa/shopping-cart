@@ -5,9 +5,10 @@ const backupArray = data.songs;
 //gets the data from the store
 export const getSongsToDisplay = (store) => {
     if(store && store.songList && store.songList.songs) {
+        console.log("Data is there")
         return store.songList.songs
     } else {
-        console.log("Error getting songs. Backup results will be returned.")
-        return backupArray
+        console.log("No data was obtained from request")
+        return []
     }
 }
