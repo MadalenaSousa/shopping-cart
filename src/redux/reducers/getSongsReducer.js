@@ -1,17 +1,15 @@
 import { START_SONG_REQUEST } from "../actionTypes";;
 
 const initialState = {
-    songs: '',
-    currentPage: 0
+    songs: []
 }
 
 const getSongsReducer = (state = initialState, action) => {
     switch (action.type) {
         case START_SONG_REQUEST:
-            let newSongs = action.payload
             return {
                 ...state,
-                songs: newSongs,
+                songs: action.payload
             }
         default: return state
     }

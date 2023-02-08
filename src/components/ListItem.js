@@ -5,7 +5,6 @@ import Button from '@mui/material/Button';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 export default function ListItem(props) {
-  console.log("Rendering ListItems")
   return (
     <Box component="span" sx={{ 
         p: 2, 

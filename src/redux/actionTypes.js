@@ -1,3 +1,1 @@
 export const START_SONG_REQUEST = "START_SONG_REQUEST";
-
-export const SPLIT_SONGS = "SPLIT_SONGS";
