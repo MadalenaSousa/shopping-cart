@@ -3,8 +3,19 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { useDispatch, useSelector } from 'react-redux';
+import { addSongToCart } from "../redux/actions/addSongToCart";
+import {useState, useEffect} from 'react'
+import { getCartSongsToDisplay } from '../redux/selector';
 
 export default function ListItem(props) {
+  const dispatch = useDispatch()
+  const item = {
+    id: props.trackId,
+    name: props.trackName,
+    price: props.trackPrice
+  }
+
   return (
     <Box component="span" sx={{ 
         p: 2, 
@@ -19,7 +30,7 @@ export default function ListItem(props) {
         <Typography align="left" variant="body1" component="div">{props.artistName}</Typography>
       </Box>
       <Typography align="left" variant="body1" component="div">{props.trackPrice} USD</Typography>
-      <Button color="inherit">
+      <Button color="inherit" onClick={() => dispatch(addSongToCart(item))} >
         <AddShoppingCartIcon/>
       </Button>
     </Box>

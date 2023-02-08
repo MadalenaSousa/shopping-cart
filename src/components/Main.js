@@ -2,9 +2,11 @@ import * as React from 'react';
 import MusicList from './MusicList';
 import Cart from './Cart';
 import Box from '@mui/material/Box';
+import { useSelector } from 'react-redux';
 
 function Main() {
- 
+  const {cartSongs} = useSelector(state => state.songs);
+
   return (
     <div style={{
         display: 'flex',
@@ -14,7 +16,7 @@ function Main() {
         <MusicList/>
     </Box> 
     <Box sx={{ flexGrow: 1/4 }}>
-        <Cart/>
+        <Cart cartSongs={cartSongs} />
     </Box>  
     </div>
   );

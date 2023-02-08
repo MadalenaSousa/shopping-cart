@@ -1,1 +1,3 @@
 export const START_SONG_REQUEST = "START_SONG_REQUEST";
+
+export const ADD_SONG_TO_CART = "ADD_SONG_TO_CART";

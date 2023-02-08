@@ -40,7 +40,7 @@ export default function MusicList() {
     });
   }
 
-  console.log(songs)
+  //console.log(songs)
   return (
     <Box component="span" sx={{ p: 2 }}>
         <Box sx={{m: 2}}>
@@ -50,6 +50,7 @@ export default function MusicList() {
         {splitSongs.map((song) => (
           <ListItem //Passing through props, should I not?
             key={song.trackId}
+            trackId={song.trackId}
             trackName={song.trackName}
             collectionName={song.collectionName}
             artistName={song.artistName}
@@ -64,51 +65,3 @@ export default function MusicList() {
     </Box>
   );
 }
-
-/*
-  const dispatch = useDispatch();
-  const [songs, setSongs] = useState([])
-  const allSongs = useSelector(getSongsToDisplay)
-  console.log(allSongs)
-  const songsPerPage = 5
-  const [pagination, setPagination] = useState({
-    count: 0,
-    from: 0,
-    to: songsPerPage
-  });
-  
-  useEffect(() => {    
-    dispatch(getSongsFromAPI)
-
-    const newSongs = allSongs.slice(pagination.from, pagination.to)
-    setSongs(newSongs)
-  }, [pagination.from, pagination.to])
-
-  const handlePageChange = (event, page) => {
-    const from = (page - 1) * songsPerPage;
-    const to = (page - 1) * songsPerPage + songsPerPage;
-
-    setPagination({
-      ...pagination,
-      from: from,
-      to: to
-    });
-  }
-
-  ----
-
-          {songs.map((song) => (
-          <ListItem
-            key={song.trackId}
-            trackName={song.trackName}
-            collectionName={song.collectionName}
-            artistName={song.artistName}
-            trackPrice={song.trackPrice}
-          />
-        ))} 
-      <Pages 
-        handlePageChange={handlePageChange} 
-        allSongs={allSongs}
-        songsPerPage={songsPerPage}
-      />
-*/

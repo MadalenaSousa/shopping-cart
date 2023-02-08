@@ -1,14 +1,24 @@
-import data from '../components/resources/db.json'
+import { createSelector } from 'reselect';
 
-const backupArray = data.songs;
-
-//gets the data from the store
 export const getSongsToDisplay = (store) => {
-    if(store && store.allSongs && store.allSongs.songs) {
-        console.log("Data is there")
-        return store.allSongs.songs
+    if(store && store.songs && store.songs.allSongs) {
+        return store.songs.allSongs
     } else {
-        console.log("No data was obtained from request")
         return []
     }
 }
+
+/*export const getCartSongsToDisplay = (store) => {
+    if(store && store.songs && store.songs.cartSongs) {
+        return store.songs.cartSongs
+    } else {
+        return []
+    }
+}*/
+
+export const getCartSongs = (state) => state.songs.cartSongs;
+
+export const getCartSongsToDisplay = createSelector(
+[getCartSongs],
+(cartSongs) => cartSongs
+);
