@@ -3,18 +3,29 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { addSongToCart } from "../redux/actions/addSongToCart";
 import {useState, useEffect} from 'react'
-import { getCartSongsToDisplay } from '../redux/selector';
 
 export default function ListItem(props) {
   const dispatch = useDispatch()
-  const item = {
+  const [item, setItem] = useState({
     id: props.trackId,
     name: props.trackName,
-    price: props.trackPrice
+    price: props.trackPrice,
+    isAdded: false
+  })
+
+  function handleClick() {
+    dispatch(addSongToCart(item));
+    setItem({
+      ...item,
+      isAdded: false
+    })
   }
+
+  //nota para a fucionalidade do mudar o icone quando ele está added: ele não está a re-renderizar o componente?
 
   return (
     <Box component="span" sx={{ 
@@ -30,9 +41,13 @@ export default function ListItem(props) {
         <Typography align="left" variant="body1" component="div">{props.artistName}</Typography>
       </Box>
       <Typography align="left" variant="body1" component="div">{props.trackPrice} USD</Typography>
-      <Button color="inherit" onClick={() => dispatch(addSongToCart(item))} >
-        <AddShoppingCartIcon/>
-      </Button>
+      {item.isAdded==false ? <Button color="inherit" onClick={() => dispatch(addSongToCart(item))} >
+                                <AddShoppingCartIcon/>
+                              </Button> : 
+                              <Button color="inherit" >
+                                <RemoveShoppingCartIcon/>
+                              </Button>
+                              }
     </Box>
   );
 }

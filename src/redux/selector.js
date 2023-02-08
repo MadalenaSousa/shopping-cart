@@ -8,7 +8,7 @@ export const getSongsToDisplay = (store) => {
     }
 }
 
-export const getCartSongsToDisplay = (store) => {
+export const getCartSongsToDisplay = (store) => { //nota: o useselector so manda coisas, só renderiza, quando nota mudanças na store GERAL não olha para os detalhes dela, não olha para store.songs.cartsongs (acho eu)
     if(store && store.songs) {
         return store.songs
     } else {

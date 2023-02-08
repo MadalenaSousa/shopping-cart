@@ -3,8 +3,20 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import CartItem from "./CartItem";
+import { getCartSongsToDisplay } from '../redux/selector';
+import { useSelector } from 'react-redux';
 
-function Cart({cartSongs}) {    
+function Cart() {    
+    const {cartSongs} = useSelector(getCartSongsToDisplay);
+
+    const priceSum = () => {
+        let price = 0;
+        for(let i = 0; i < cartSongs.length; i++) {
+            price = price + cartSongs[i].price;
+        }
+        return price;
+    }
+
     return (
     <Box component="span" sx={{ p: 2 }}>
         <Box sx={{ //will make a separate component
@@ -43,7 +55,7 @@ function Cart({cartSongs}) {
             justifyContent: 'space-around'
         }}>
             <Typography align="left" variant="body1" component="div">{cartSongs.length}</Typography>
-            <Typography align="left" variant="body1" component="div"># USD</Typography>
+            <Typography align="left" variant="body1" component="div">{priceSum()} USD</Typography>
         </Box>
         <Box sx={{textAlign: 'center'}}>
             <Button variant="contained" style={{backgroundColor: '#90CAF9', color: 'white'}}>Finalizar Compra</Button>
