@@ -22,7 +22,11 @@ function Cart({cartSongs}) {
         </Box>
 
         {cartSongs.map((song) => (
-          <CartItem key={song.id}/>
+          <CartItem 
+            key={song.id}
+            name={song.name}
+            price={song.price}
+          />
         ))}
 
         <Box sx={{ //will make a separate component
@@ -38,7 +42,7 @@ function Cart({cartSongs}) {
             display: 'flex',
             justifyContent: 'space-around'
         }}>
-            <Typography align="left" variant="body1" component="div">#</Typography>
+            <Typography align="left" variant="body1" component="div">{cartSongs.length}</Typography>
             <Typography align="left" variant="body1" component="div"># USD</Typography>
         </Box>
         <Box sx={{textAlign: 'center'}}>

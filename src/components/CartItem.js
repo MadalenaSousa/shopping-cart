@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import RemoveShoppingCartRoundedIcon from '@mui/icons-material/RemoveShoppingCartRounded';
 
-export default function CartItem() {
+export default function CartItem({name, price}) {
   return (
     <Box component="span" sx={{ 
         p: 2, 
@@ -13,8 +13,8 @@ export default function CartItem() {
         display: 'flex', 
         justifyContent: 'space-between', 
         border: '1px solid #90CAF9' }}>
-      <Typography align="left" variant="body1" component="div">Nome da Música</Typography>
-      <Typography align="left" variant="body1" component="div">Preço USD</Typography>
+      <Typography align="left" variant="body1" component="div">{name}</Typography>
+      <Typography align="left" variant="body1" component="div">{price}</Typography>
       <Button color="inherit">
         <RemoveShoppingCartRoundedIcon/>
       </Button>

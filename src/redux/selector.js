@@ -8,17 +8,10 @@ export const getSongsToDisplay = (store) => {
     }
 }
 
-/*export const getCartSongsToDisplay = (store) => {
-    if(store && store.songs && store.songs.cartSongs) {
-        return store.songs.cartSongs
+export const getCartSongsToDisplay = (store) => {
+    if(store && store.songs) {
+        return store.songs
     } else {
         return []
     }
-}*/
-
-export const getCartSongs = (state) => state.songs.cartSongs;
-
-export const getCartSongsToDisplay = createSelector(
-[getCartSongs],
-(cartSongs) => cartSongs
-);
+}

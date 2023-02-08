@@ -3,9 +3,10 @@ import MusicList from './MusicList';
 import Cart from './Cart';
 import Box from '@mui/material/Box';
 import { useSelector } from 'react-redux';
+import { getCartSongsToDisplay } from '../redux/selector';
 
 function Main() {
-  const {cartSongs} = useSelector(state => state.songs);
+  const {cartSongs} = useSelector(getCartSongsToDisplay);
 
   return (
     <div style={{
@@ -23,10 +24,3 @@ function Main() {
 }
 
 export default Main;
-
-/*
-  const dispatch = useDispatch();
-  useEffect(() => {    
-    dispatch(getSongsFromAPI)
-  }, [])
-*/
