@@ -1,13 +1,11 @@
 import './App.css';
 
-import Header from './components/Header';
-import Main from './components/Main';
+import ShoppingCart from './components/ShoppingCart'
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <Main/>
+      <ShoppingCart/>
     </div>
   );
 }
