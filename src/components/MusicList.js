@@ -18,7 +18,8 @@ export default function MusicList() {
     from: 0,
     to: songsPerPage
   });
-  const [splitSongs, setSplitSongs] = useState([])
+  const { filteredSongs } = useSelector(state => state.songs)
+  const [splitSongs, setSplitSongs] = useState(filteredSongs)
   const { cartSongs } = useSelector(state => state.songs)
 
   useEffect(() => {
@@ -26,9 +27,9 @@ export default function MusicList() {
   }, [])
   
   useEffect(() => {    
-    const newSongs = songs.slice(pagination.from, pagination.to)
+    const newSongs = filteredSongs.slice(pagination.from, pagination.to)
     setSplitSongs(newSongs)
-  }, [pagination.from, pagination.to, songs.length])
+  }, [pagination.from, pagination.to, songs.length, filteredSongs])
 
   const handlePageChange = (event, page) => {
     const from = (page - 1) * songsPerPage;
@@ -57,7 +58,7 @@ export default function MusicList() {
         ))}
         <Pages 
           handlePageChange={handlePageChange} 
-          allSongs={songs}
+          totalSongs={filteredSongs.length}
           songsPerPage={songsPerPage}
         />
     </Box>

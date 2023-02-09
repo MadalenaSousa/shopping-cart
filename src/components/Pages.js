@@ -3,11 +3,11 @@ import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
 
 
-export default function Pages({handlePageChange, allSongs, songsPerPage}) {
+export default function Pages({handlePageChange, totalSongs, songsPerPage}) {
   return (
     <Box>
         <Pagination 
-          count={Math.ceil(allSongs.length / songsPerPage)} 
+          count={Math.ceil(totalSongs / songsPerPage)} 
           onChange={handlePageChange}
         />
     </Box>
