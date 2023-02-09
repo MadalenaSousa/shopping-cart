@@ -6,6 +6,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { addSongToCart } from "../redux/actions/addSongToCart";
+import { removeSongFromCart } from "../redux/actions/removeSongFromCart";
 import {useState, useEffect} from 'react'
 
 export default function ListItem({song, isAdded}) {
@@ -28,11 +29,11 @@ export default function ListItem({song, isAdded}) {
       
       {isAdded===false ? 
 
-      <Button color="inherit" sx={{backgroundColor: 'blue'}} onClick={() => dispatch(addSongToCart(song))} >
+      <Button color="inherit" onClick={() => dispatch(addSongToCart(song))} >
         <AddShoppingCartIcon/>
       </Button> : 
 
-      <Button color="inherit" >
+      <Button color="inherit" onClick={() => dispatch(removeSongFromCart(song))} >
         <RemoveShoppingCartIcon/>
       </Button>
       }
