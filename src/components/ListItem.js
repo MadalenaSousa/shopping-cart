@@ -20,8 +20,10 @@ export default function ListItem(props) {
   function handleClick() {
     dispatch(addSongToCart(item));
     setItem({
-      ...item,
-      isAdded: false
+      id: props.trackId,
+      name: props.trackName,
+      price: props.trackPrice,
+      isAdded: true
     })
   }
 
@@ -41,7 +43,7 @@ export default function ListItem(props) {
         <Typography align="left" variant="body1" component="div">{props.artistName}</Typography>
       </Box>
       <Typography align="left" variant="body1" component="div">{props.trackPrice} USD</Typography>
-      {item.isAdded==false ? <Button color="inherit" onClick={() => dispatch(addSongToCart(item))} >
+      {item.isAdded==false ? <Button color="inherit" onClick={handleClick} >
                                 <AddShoppingCartIcon/>
                               </Button> : 
                               <Button color="inherit" >
