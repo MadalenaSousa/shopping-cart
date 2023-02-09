@@ -33,7 +33,7 @@ const songsReducer = (state = initialState, action) => {
             };
         case FILTER_SONGS:
             const newFilteredSongs = state.allSongs.filter((song) =>
-                song.trackName.toLowerCase().includes(action.payload.toLowerCase())
+                song.trackName.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").includes(action.payload.toLowerCase())
             );
 
             return {

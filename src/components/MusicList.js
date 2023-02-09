@@ -49,13 +49,13 @@ export default function MusicList() {
             <Typography align="left" variant="h5" component="div" sx={{fontWeight: 'bold'}}>Lista de Músicas</Typography>
             <Search/>
         </Box>
-        {splitSongs.map((song) => (
+        {splitSongs.length > 0 ? splitSongs.map((song) => (
           <ListItem
             key={song.trackId}
             song={song}
             isAdded={cartSongs.find(cartSong => cartSong.trackId === song.trackId) !== undefined}
           />
-        ))}
+        )) : "Nenhuma música corresponde à sua procura"}
         <Pages 
           handlePageChange={handlePageChange} 
           totalSongs={filteredSongs.length}
