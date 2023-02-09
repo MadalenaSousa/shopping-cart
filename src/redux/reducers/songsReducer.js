@@ -1,8 +1,8 @@
-import { ADD_SONG_TO_CART, START_SONG_REQUEST } from "../actionTypes";;
+import { ADD_SONG_TO_CART, REMOVE_SONG_FROM_CART, START_SONG_REQUEST } from "../actionTypes";;
 
 const initialState = {
     allSongs: [],
-    cartSongs: []
+    cartSongs: [],
 }
 
 const songsReducer = (state = initialState, action) => {
@@ -11,14 +11,24 @@ const songsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 allSongs: action.payload
-            }
+            };
         case ADD_SONG_TO_CART:
-            const newCartSongs = state.cartSongs;
-            newCartSongs.push(action.payload)
+            const cartSongsAdded = state.cartSongs;            
+            cartSongsAdded.push(action.payload)
+            
             return {
                 ...state,
-                cartSongs: newCartSongs
-            }    
+                cartSongs: cartSongsAdded
+            };
+        case REMOVE_SONG_FROM_CART:
+            const cartSongsRemoved = state.cartSongs.filter(
+                song => song.trackId !== action.payload.trackId
+            );
+            
+            return {
+                ...state,
+                cartSongs: cartSongsRemoved
+            };
         default: return state
     }
 }

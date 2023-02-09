@@ -8,27 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addSongToCart } from "../redux/actions/addSongToCart";
 import {useState, useEffect} from 'react'
 
-export default function ListItem(props) {
-  const dispatch = useDispatch()
-  const [item, setItem] = useState({
-    id: props.trackId,
-    name: props.trackName,
-    price: props.trackPrice,
-    isAdded: false
-  })
-
-  function handleClick() {
-    dispatch(addSongToCart(item));
-    setItem({
-      id: props.trackId,
-      name: props.trackName,
-      price: props.trackPrice,
-      isAdded: true
-    })
-  }
-
-  //nota para a fucionalidade do mudar o icone quando ele está added: ele não está a re-renderizar o componente?
-
+export default function ListItem({song, isAdded}) {
+  const dispatch = useDispatch();
+  
   return (
     <Box component="span" sx={{ 
         p: 2, 
@@ -38,18 +20,22 @@ export default function ListItem(props) {
         justifyContent: 'space-between', 
         border: '1px solid #90CAF9' }}>
       <Box>
-        <Typography align="left" sx={{fontWeight: 'bold'}} variant="body1" component="div">{props.trackName}</Typography>
-        <Typography align="left" variant="body1" component="div">{props.collectionName}</Typography>
-        <Typography align="left" variant="body1" component="div">{props.artistName}</Typography>
+        <Typography align="left" sx={{fontWeight: 'bold'}} variant="body1" component="div">{song.trackName}</Typography>
+        <Typography align="left" variant="body1" component="div">{song.collectionName}</Typography>
+        <Typography align="left" variant="body1" component="div">{song.artistName}</Typography>
       </Box>
-      <Typography align="left" variant="body1" component="div">{props.trackPrice} USD</Typography>
-      {item.isAdded==false ? <Button color="inherit" onClick={handleClick} >
-                                <AddShoppingCartIcon/>
-                              </Button> : 
-                              <Button color="inherit" >
-                                <RemoveShoppingCartIcon/>
-                              </Button>
-                              }
+      <Typography align="left" variant="body1" component="div">{song.trackPrice} USD</Typography>
+      
+      {isAdded===false ? 
+
+      <Button color="inherit" sx={{backgroundColor: 'blue'}} onClick={() => dispatch(addSongToCart(song))} >
+        <AddShoppingCartIcon/>
+      </Button> : 
+
+      <Button color="inherit" >
+        <RemoveShoppingCartIcon/>
+      </Button>
+      }
     </Box>
   );
 }

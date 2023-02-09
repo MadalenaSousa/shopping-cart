@@ -12,7 +12,7 @@ function Cart() {
     const priceSum = () => {
         let price = 0;
         for(let i = 0; i < cartSongs.length; i++) {
-            price = price + cartSongs[i].price;
+            price = price + cartSongs[i].trackPrice;
         }
         return price;
     }
@@ -35,9 +35,8 @@ function Cart() {
 
         {cartSongs.map((song) => (
           <CartItem 
-            key={song.id}
-            name={song.name}
-            price={song.price}
+            key={song.trackId}
+            song={song}
           />
         ))}
 

@@ -19,6 +19,7 @@ export default function MusicList() {
     to: songsPerPage
   });
   const [splitSongs, setSplitSongs] = useState([])
+  const { cartSongs } = useSelector(state => state.songs)
 
   useEffect(() => {
     dispatch(fetchSongsFromAPI())
@@ -40,7 +41,7 @@ export default function MusicList() {
     });
   }
 
-  //console.log(songs)
+  //console.log(splitSongs)
   return (
     <Box component="span" sx={{ p: 2 }}>
         <Box sx={{m: 2}}>
@@ -48,13 +49,10 @@ export default function MusicList() {
             <Search/>
         </Box>
         {splitSongs.map((song) => (
-          <ListItem //Passing through props, should I not?
+          <ListItem
             key={song.trackId}
-            trackId={song.trackId}
-            trackName={song.trackName}
-            collectionName={song.collectionName}
-            artistName={song.artistName}
-            trackPrice={song.trackPrice}
+            song={song}
+            isAdded={cartSongs.find(cartSong => cartSong.trackId === song.trackId) !== undefined}
           />
         ))}
         <Pages 
