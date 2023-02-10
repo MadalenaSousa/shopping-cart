@@ -12,6 +12,8 @@ function ShoppingCart() {
     if(isLogged === false) {
       navigate('/')
     }
+
+    document.getElementById('body').style.backgroundColor = 'white'
   }, []);
   
   return (

@@ -2,6 +2,9 @@
   text-align: left;
 }
 
-body {
-  height: 100vh;
+body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
