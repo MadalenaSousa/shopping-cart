@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import {useState} from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../redux/actions/userLogin';
 
@@ -15,7 +15,7 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    function handleSubmit() {
+    function handleSubmit() { //should this saved data be persistent?
         const userData = {
             userEmail: email,
             userPassword: password
