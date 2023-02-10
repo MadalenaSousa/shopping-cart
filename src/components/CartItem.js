@@ -3,9 +3,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import RemoveShoppingCartRoundedIcon from '@mui/icons-material/RemoveShoppingCartRounded';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { removeSongFromCart } from "../redux/actions/removeSongFromCart";
-import {useState, useEffect} from 'react'
 
 export default function CartItem({song}) {
   const dispatch = useDispatch()

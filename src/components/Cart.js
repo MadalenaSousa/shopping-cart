@@ -5,9 +5,11 @@ import Button from '@mui/material/Button';
 import CartItem from "./CartItem";
 import { getCartSongsToDisplay } from '../redux/selector';
 import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 
 function Cart() {    
     const {cartSongs} = useSelector(getCartSongsToDisplay);
+    const [isBought, setIsBought] = useState(false)
 
     const priceSum = () => {
         let price = 0;
@@ -16,6 +18,10 @@ function Cart() {
         }
         return price;
     }
+
+    useEffect(() => {setIsBought(false)}, []);
+
+    const sortedSongs = [].concat(cartSongs).sort((a, b) => a.trackId > b.trackId ? 1 : -1)
 
     return (
     <Box component="span" sx={{ p: 2 }}>
@@ -33,7 +39,7 @@ function Cart() {
             <Typography align="left" variant="body1" component="div" sx={{fontWeight: 'bold'}}>Preço</Typography>
         </Box>
 
-        {cartSongs.map((song) => (
+        {sortedSongs.map((song) => (
           <CartItem 
             key={song.trackId}
             song={song}
@@ -57,8 +63,9 @@ function Cart() {
             <Typography align="left" variant="body1" component="div">{priceSum()} USD</Typography>
         </Box>
         <Box sx={{textAlign: 'center'}}>
-            <Button variant="contained" style={{backgroundColor: '#90CAF9', color: 'white'}}>Finalizar Compra</Button>
+            <Button type='submit' onClick={() => setIsBought(!isBought)} variant="contained" style={{backgroundColor: '#90CAF9', color: 'white'}}>Finalizar Compra</Button>
         </Box>
+        {isBought && <Box sx={{textAlign: 'center', m: 2}}>A sua compra foi finalizada com sucesso!</Box>}
     </Box>
     );
 }
