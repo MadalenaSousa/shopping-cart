@@ -15,19 +15,13 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = event => {
-        console.log("enter handle submit")
-        event.preventDefault();
-        
-        if (email.length === 0 || password.length === 0) {
-        }
-
-        const userCredentials = {
+    function handleSubmit() {
+        const userData = {
             userEmail: email,
             userPassword: password
         }
 
-        dispatch(userLogin(userCredentials))
+        dispatch(userLogin(userData))
 
         navigate("/shopping-cart")
     };  

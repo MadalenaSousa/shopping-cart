@@ -2,7 +2,7 @@ import { USER_LOGIN } from "../actionTypes";;
 
 const initialState = {
     isLogged: false,
-    userCredentials: {}
+    credentials: {}
 }
 
 const userReducer = (state = initialState, action) => {
@@ -15,7 +15,7 @@ const userReducer = (state = initialState, action) => {
 
             const newState = {
                 isLogged: true,
-                userCredentials: newUserCredentials
+                credentials: newUserCredentials
             }
             return newState;
         default: return state
