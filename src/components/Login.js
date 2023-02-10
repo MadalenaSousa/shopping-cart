@@ -15,7 +15,8 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    function handleSubmit() { //should this saved data be persistent?
+    function handleSubmit(event) { //should this saved data be persistent?
+        event.preventDefault() //removes the warning about the form not having any associated action
         const userData = {
             userEmail: email,
             userPassword: password

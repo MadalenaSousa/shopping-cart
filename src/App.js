@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ShoppingCart from './components/ShoppingCart'
 import Login from './components/Login'
 
-function App() {
+function App() {  
   return (
       <BrowserRouter>
         <div className="App">
