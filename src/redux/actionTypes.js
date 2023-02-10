@@ -5,3 +5,5 @@ export const ADD_SONG_TO_CART = "ADD_SONG_TO_CART";
 export const REMOVE_SONG_FROM_CART = "REMOVE_SONG_FROM_CART";
 
 export const FILTER_SONGS = "FILTER_SONGS";
+
+export const USER_LOGIN = "USER_LOGIN";

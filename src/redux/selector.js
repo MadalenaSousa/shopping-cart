@@ -1,5 +1,3 @@
-import { createSelector } from 'reselect';
-
 export const getSongsToDisplay = (store) => {
     if(store && store.songs && store.songs.allSongs) {
         return store.songs.allSongs
@@ -15,3 +13,5 @@ export const getCartSongsToDisplay = (store) => { //nota: o useselector so manda
         return []
     }
 }
+
+export const getUserData = (state) => (state.user)
