@@ -22,7 +22,7 @@ function Cart() {
         <Box sx={{ //will make a separate component
             m: 2
         }}>
-            <Typography align="left" variant="h5" component="div" sx={{fontWeight: 'bold'}}>Carrinho de Compras</Typography>
+            <Typography align="left" variant="h5" component="div" sx={{fontWeight: 'bold', color: '#90CAF9'}}>Carrinho de Compras</Typography>
         </Box>
         <Box sx={{
             m: 2,

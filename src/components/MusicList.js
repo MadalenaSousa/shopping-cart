@@ -46,7 +46,7 @@ export default function MusicList() {
   return (
     <Box component="span" sx={{ p: 2 }}>
         <Box sx={{m: 2}}>
-            <Typography align="left" variant="h5" component="div" sx={{fontWeight: 'bold'}}>Lista de Músicas</Typography>
+            <Typography align="left" variant="h5" component="div" sx={{fontWeight: 'bold', color: '#90CAF9'}}>Lista de Músicas</Typography>
             <Search/>
         </Box>
         {splitSongs.length > 0 ? splitSongs.map((song) => (
