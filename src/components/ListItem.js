@@ -21,6 +21,7 @@ export default function ListItem({song, isAdded}) {
         justifyContent: 'space-between', 
         border: '1px solid #90CAF9' }}>
       <Box>
+        <img src={song.previewUrl} height="100px"/>
         <Typography align="left" sx={{fontWeight: 'bold'}} variant="body1" component="div">{song.trackName}</Typography>
         <Typography align="left" variant="body1" component="div">{song.collectionName}</Typography>
         <Typography align="left" variant="body1" component="div">{song.artistName}</Typography>
