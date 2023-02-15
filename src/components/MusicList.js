@@ -21,6 +21,7 @@ export default function MusicList() {
   const { filteredSongs } = useSelector(state => state.songs)
   const [splitSongs, setSplitSongs] = useState(filteredSongs)
   const { cartSongs } = useSelector(state => state.songs)
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     setPagination({
@@ -28,6 +29,7 @@ export default function MusicList() {
       from: 0,
       to: songsPerPage
     });
+    setCurrentPage(1);
   }, [filteredSongs])
 
   useEffect(() => {
@@ -42,6 +44,7 @@ export default function MusicList() {
   const handlePageChange = (event, page) => {
     const from = (page - 1) * songsPerPage;
     const to = (page - 1) * songsPerPage + songsPerPage;
+    setCurrentPage(page);
 
     setPagination({
       ...pagination,
@@ -68,6 +71,7 @@ export default function MusicList() {
           handlePageChange={handlePageChange} 
           totalSongs={filteredSongs.length}
           songsPerPage={songsPerPage}
+          currentPage={currentPage}
         />
     </Box>
   );
