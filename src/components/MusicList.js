@@ -23,6 +23,14 @@ export default function MusicList() {
   const { cartSongs } = useSelector(state => state.songs)
 
   useEffect(() => {
+    setPagination({
+      ...pagination,
+      from: 0,
+      to: songsPerPage
+    });
+  }, [filteredSongs])
+
+  useEffect(() => {
     dispatch(fetchSongsFromAPI())
   }, [])
   
