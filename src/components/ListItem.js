@@ -7,9 +7,12 @@ import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { addSongToCart } from "../redux/actions/addSongToCart";
 import { removeSongFromCart } from "../redux/actions/removeSongFromCart";
-import {useState, useEffect} from 'react'
+import { addSongToFavorites } from "../redux/actions/addSongToFavorites";
+import { removeSongFromFavorites } from "../redux/actions/removeSongsFromFavorites";
+import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 
-export default function ListItem({song, isAdded}) {
+export default function ListItem({song, isAdded, isFaved}) {
   const dispatch = useDispatch();
   
   return (
@@ -19,6 +22,7 @@ export default function ListItem({song, isAdded}) {
         borderRadius: 2, 
         display: 'flex', 
         justifyContent: 'space-between', 
+        alignItems: 'center',
         border: '1px solid #90CAF9' }}>
       <Box>
         <img src={song.previewUrl} height="100px"/>
@@ -28,16 +32,25 @@ export default function ListItem({song, isAdded}) {
       </Box>
       <Typography align="left" variant="body1" component="div">{song.trackPrice} USD</Typography>
       
+      <Box>
       {isAdded===false ? 
+        <Button color="inherit" onClick={() => dispatch(addSongToCart(song))} >
+          <AddShoppingCartIcon/>
+        </Button> : 
 
-      <Button color="inherit" onClick={() => dispatch(addSongToCart(song))} >
-        <AddShoppingCartIcon/>
-      </Button> : 
-
-      <Button color="inherit" onClick={() => dispatch(removeSongFromCart(song))} >
-        <RemoveShoppingCartIcon/>
-      </Button>
-      }
+        <Button color="inherit" onClick={() => dispatch(removeSongFromCart(song))} >
+          <RemoveShoppingCartIcon/>
+        </Button>
+        }
+        {isFaved===false ?
+        <Button color="inherit" onClick={() => dispatch(addSongToFavorites(song))} >
+          <FavoriteBorderRoundedIcon/>
+        </Button> :
+        <Button color="inherit" onClick={() => dispatch(removeSongFromFavorites(song))} >
+          <FavoriteRoundedIcon/>
+        </Button>
+        }
+      </Box>
     </Box>
   );
 }

@@ -21,6 +21,7 @@ export default function MusicList() {
   const { filteredSongs } = useSelector(state => state.songs)
   const [splitSongs, setSplitSongs] = useState(filteredSongs)
   const { cartSongs } = useSelector(state => state.songs)
+  const { favoriteSongs } = useSelector(state => state.songs)
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
@@ -65,6 +66,7 @@ export default function MusicList() {
             key={song.trackId}
             song={song}
             isAdded={cartSongs.find(cartSong => cartSong.trackId === song.trackId) !== undefined}
+            isFaved={favoriteSongs.find(favoriteSong => favoriteSong.trackId === song.trackId) !== undefined}
           />
         )) : "Nenhuma música corresponde à sua procura"}
         <Pages 

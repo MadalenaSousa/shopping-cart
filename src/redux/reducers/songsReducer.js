@@ -1,9 +1,10 @@
-import { ADD_SONG_TO_CART, FILTER_SONGS, REMOVE_SONG_FROM_CART, START_SONG_REQUEST } from "../actionTypes";;
+import { ADD_SONG_TO_CART, FILTER_SONGS, REMOVE_SONG_FROM_CART, START_SONG_REQUEST, ADD_SONG_TO_FAVORITES, REMOVE_SONG_FROM_FAVORITES } from "../actionTypes";;
 
 const initialState = {
     allSongs: [],
     cartSongs: [],
-    filteredSongs: []
+    filteredSongs: [],
+    favoriteSongs:[]
 }
 
 const songsReducer = (state = initialState, action) => {
@@ -39,6 +40,23 @@ const songsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 filteredSongs: newFilteredSongs,
+            };
+        case ADD_SONG_TO_FAVORITES:
+            const favoriteSongsAdded = state.favoriteSongs;            
+            favoriteSongsAdded.push(action.payload)
+            
+            return {
+                ...state,
+                favoriteSongs: favoriteSongsAdded
+            };
+        case REMOVE_SONG_FROM_FAVORITES:
+            const favoriteSongsRemoved = state.favoriteSongs.filter(
+                song => song.trackId !== action.payload.trackId
+            );
+            
+            return {
+                ...state,
+                favoriteSongs: favoriteSongsRemoved
             };
         default: return state
     }
