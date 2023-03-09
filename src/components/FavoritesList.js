@@ -1,11 +1,10 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import ListItem from './ListItem';
-import Typography from '@mui/material/Typography';
 import Pages from './Pages';
 import {useState, useEffect} from 'react'
 import { useSelector } from 'react-redux';
-import Header from './Header';
+import Header from './Header/Header';
 
 export default function FavoritesList() {
   const songsPerPage = 5

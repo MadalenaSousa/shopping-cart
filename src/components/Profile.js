@@ -2,7 +2,7 @@ import React from "react";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
-import Header from "./Header";
+import Header from './Header/Header';
 import { Avatar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
