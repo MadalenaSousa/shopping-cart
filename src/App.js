@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ShoppingCart from './components/ShoppingCart'
-import Login from './components/Login'
+import Login from './components/Login/Login'
 import Profile from './components/Profile'
 import FavoritesList from './components/FavoritesList';
 

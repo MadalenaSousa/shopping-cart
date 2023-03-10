@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
-import { userLogin } from '../redux/actions/userLogin';
+import { userLogin } from '../../redux/actions/userLogin';
 import styled from "styled-components";
 
 const S = {
@@ -44,7 +44,7 @@ function Login() {
     };  
 
     return (
-    <Box component='form' onSubmit={handleSubmit} sx={{textAlign: 'center', transform: 'translateY(50%)', width: '100%'}}>
+    <Box role='form' component='form' onSubmit={handleSubmit} sx={{textAlign: 'center', transform: 'translateY(50%)', width: '100%'}}>
         <Box sx={{m: 2}}>
             <Typography variant="h5" component="div" sx={{fontWeight: 'bold', color: '#90CAF9', marginBottom: 4}}>Bem vindo ao seu <br/> Carrinho de Compras!</Typography>
         </Box>
